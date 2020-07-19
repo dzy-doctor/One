@@ -1,0 +1,633 @@
+body{
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    color:#6c7279;
+    background-color: #fff;
+    -webkit-font-smoothing:antialiased; /*сглаживет шрифты*/
+}
+*,
+*:before,
+*:after{
+    box-sizing: border-box; /*не учитывает паденги*/
+}
+h1, h2, h3, h4, h5, h6{
+    margin: 0;
+} 
+p{
+    margin: 0 0 10;
+}
+/*conteaner
+======================*/
+.container{
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 15px; /*делаем отступ что бы элементы не прилегали к краю окна при изменению экрана*/
+    margin: 0 auto;
+    outline: 1px solid red;
+}
+/*Header
+==========================*/
+.header{
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 1000;
+}
+.header__iner{
+    display: flex;
+    justify-content: space-between; /*между эллементами флексбоксов будет разрыв*/
+    align-items: center;/*выравниваем ссылки по центру*/
+    padding: 35px 0;
+    border-bottom: 1px solid #516369;/*создаем линию внезу меню*/
+}
+/*nav
+====================*/
+.nav{
+    display: flex;
+    font-size: 13px;
+    font-weight: 700; 
+    text-transform: uppercase;
+      
+}
+.nav__linc{
+    margin-left: 50px;
+    color:#fff;
+    text-decoration: none;
+    opacity: .75;
+
+    transition: opacity .1s linear;/*плывный переход при наведении*/
+}
+.nav__linc:first-child{ /*обращаемся к первой ссылки и убераем у нее отступ*/
+    margin-left: 0;
+}
+.nav__linc:hover{
+    opacity: 1;
+    
+}
+/*intro
+====================*/
+.intro{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 750px;
+    padding-top: 100px;
+    background: #30334c 
+    url(/img/header.jpg) center no-repeat;/*по центру, не повторялось, и на всю область*/  
+    background-size:cover;
+    
+}
+.intro__inner{
+    width: 100%;
+    max-width: 970px;
+    margin: 0 auto;
+    text-align: center;
+}
+.intro__title{
+    margin: 0 0 30px;
+    font-family:'Open Sans', sans-serif; ;
+    font-size: 65px;
+    line-height: 1.1;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+.intro__subtitle{
+    margin-bottom: 60px;
+    font-size: 22px;
+    color: #fff;
+    line-height: 1.5;
+    font-weight: 400;
+}
+/*Button
+====================*/
+.btn{
+    display: inline-block;/*что бы добавлять падинги и размеры*/
+    vertical-align: top;/*выравнивание ппо вертикали*/
+    padding: 14px 40px;
+    
+    text-align: center;
+    border-radius: 2px;
+    font-size: 13px;
+    color:#fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: inherit;/*наследует от радителя*/
+    transition: background .1s liner;
+    border: 0;
+    cursor: pointer;
+}
+.btn--red{
+    background-color: #e84545;
+}
+.btn--red:hover{
+    background-color: #dd3434;
+}
+.btn--long{
+    min-width: 280px;
+}
+/*Features
+====================*/
+#features{ /*сделано по айди для ссылки якоря*/
+    display: flex;
+    flex-wrap: wrap; /*переносит элементы на вторую строку*/
+    margin: 95px 0;
+}  
+.features__item{
+    width: 33.33333%;
+    margin: 25px 0 ;
+    padding: 0 40px;
+    text-align: center;
+} 
+.features__icon{
+    margin-bottom: 25px;
+}
+.features__title{
+    font-size: 14px;
+    color:#2d3033 ;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.features__text{
+    font-size: 14px;
+    line-height: 1.5;
+    color:#6c7279;
+}
+/*Works
+====================*/
+.works{
+    display: flex;
+    flex-wrap: wrap;
+}
+.works__item{
+    height: 350px;
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;
+    width: 25%;
+    position: relative;
+    overflow: hidden;/*недает выступать за границы блока */
+}
+.works__item:hover .works__content { /*при наведении на блок появляется works__content*/
+    opacity: 1;
+}
+
+.works__photo{
+    min-width: 100%; /*делаем для одаптации в медиа запросах*/
+    position: absolute;
+    top:50%; /*выравниевание по оси*/
+    left:50%;/*выравниевание по оси*/
+    z-index:1;
+
+    transform: translate3d(-50%,-50%,0 ); /*выравнивание по оси х ,у, z*/
+}
+
+.works__content{
+    display: flex; /*для текста*/
+    flex-direction: column;  /* что бы текст переносился нановую строку и занимал всю строку*/
+    justify-content: center;  /*выравнивание текста по центру вертикали*/
+    width: 100%;
+    height: 100%;
+
+    text-align: center;
+    opacity: 0; /*скрываем блок*/
+    transition: opacity .2s linear ;
+    background-color: rgb(232, 69, 69, .9);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.works__title{
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.works__text{
+    font-size: 14px;
+    color: #fff;
+}
+
+/*Team
+====================*/
+.team{
+    margin:100px 0 70px; /*70 а не 100 потомучто снизу маржин 30px*/ 
+}
+
+.team__inner{
+    display: flex;
+    flex-wrap: wrap; /*на случай добавления новой картинки*/
+    margin: 0 -15px; /*прижимаем картинку к левому краю*/
+}
+.team__item{
+    margin-bottom: 30px; /*отступ с низу на случай добавления новой картинки*/
+    width: 25%;
+    padding: 0 15px;
+}
+
+.team__foto{
+  margin-bottom: 20px;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.team__name{
+    margin-bottom: 8px;
+
+    font-size: 22px;
+    color: #2d3033;
+   
+}
+
+.team__prof{
+    margin-bottom: 15px;
+
+    font-size: 13px;
+    color: #e84545;
+    text-transform: uppercase;
+}
+
+.team__text{
+    margin-bottom: 20px;
+
+    font-size: 14px;
+    line-height: 1.5;
+    color:#6c7279;
+    
+}
+
+
+
+/*Social
+====================*/
+
+.social{
+    display: flex;
+}
+.scial--footer{
+    justify-content: center;
+}
+
+.social__item{
+    display: flex; /*располагаем иконку по центру блока*/
+    justify-content: center; /*располагаем иконку по центру блока*/
+    align-items: center; /*располагаем иконку по центру блока*/
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e8ecee;
+    background: #fff;
+    transition: background .1s linear;
+    margin-right: 4px;
+}
+.social__item:hover{ /* при наведении на иконку меняется фон*/
+    background: #e8ecee;
+}
+.social__item:hover .social__icon{ /*при наведении на иконку менятеся цвет иконки*/
+    fill: #e84545;
+}
+.scial--footer .social__item{
+    background-color: transparent;
+    background: none;
+    border-width: 2px;
+    border-color: #fff;
+    border-radius: 2px;
+}
+.scial--footer .social__item:hover{
+    background-color: #fff;
+}
+
+
+.social__icon{
+    display: block;
+    height: 18px;
+    fill:#c6cacc; /*обращаемся к свг иконки и меняем цвет*/
+    transition: fill .1s linear;
+}
+
+.scial--footer .social__icon{
+    fill:#fff;
+}
+
+/*Reviews
+====================*/
+.reviews{
+    overflow: hidden; /*что бы контент не вылезал за границы*/
+    background-color: #53354a;
+}
+.reviews_item{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.reviews__photo{
+    width: 50%;
+    height: 500px;
+    position: relative;
+}
+.reviews__img{ /* прижимаем картинку в блоке отзывов к левому краю и делаем по верх фона*/
+    position: absolute;
+    top:50%;
+    right:0;
+    z-index: 1;
+    transform: translateY(-50%); /*отцинтровываем фотографию*/
+}
+.reviews__content{ /*позицианируем текст в блоке отзывов*/
+    padding-left:80px;
+    display: flex;
+    flex-direction: column; /*каждый следующий блок будет с новой строки*/ 
+    justify-content: center; /*выравниваем текст по центру*/
+    width: 50%;
+}
+.reviews__text{
+    margin-bottom: 25px;
+    font-family: "Cardo", sans-serif;
+    font-style: italic;
+    font-size: 36px;
+    line-height: 1.2;
+    color: #fff;
+}
+.reviews__author{
+    
+    font-size: 13px;
+    
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+/*Reviews
+====================*/
+.download{
+    margin: 90px 0;
+    
+    text-align: center;
+
+}
+
+.download__title{
+    margin-bottom: 10px;
+
+    font-size: 28px;
+    font-weight: 300;
+    color: #2d3033;
+}
+
+.download__text{
+    margin-bottom: 30px;
+
+    font-size: 13px;
+    
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #2d3033;
+}
+
+/*Reviews
+====================*/
+.footer{
+    background-color: #3a3e64;
+}
+
+.footer__iner{
+    display: flex;
+    flex-wrap:wrap;
+    padding: 70px 0;
+}
+
+.footer__block{
+    width: 33.33333%;
+    padding: 0 15px;
+    text-align: center;
+}
+
+.footer__title{
+    margin-bottom: 10px;
+    font-size: 14px;
+    
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.footer__address{
+    font-size: 14px;
+    line-height: 1.5;
+    font-style: normal;
+    color: rgb(255, 255, 255, 0.5);
+}
+
+.footer__text{
+    font-size: 14px;
+    line-height: 1.5;
+    
+    color: rgb(255, 255, 255, 0.5);
+}
+/*Copyright
+====================*/
+.copyright{
+    padding: 20px 0;
+    background:#313454;
+}
+.copyright__text{
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #808080;
+}
+.copyright__text span{
+    color:#fff;
+}
+/*Burger
+====================*/
+.burger{
+    display: none;
+}
+
+/*Media
+====================*/
+@media(max-width:1300px){
+    /* Works */
+    .works__item{
+        width: 50%;
+    }
+}
+
+
+
+@media(max-width:991px){ /*условия медиа запроса при котором будет выполнятся изменение*/
+    
+    /* Nav */
+    .nav{
+        display:none;
+    }
+
+    /* Burger */  /*создаем бургер меню*/
+    .burger{
+        display: block;
+        background: none;
+        border: 0;
+        cursor: pointer;
+        padding: 9px 2px;
+    }
+    .burger__item{ 
+        display: block;
+        width: 26px;
+        height: 3px;
+
+        background-color: #fff;
+
+        font-size: 0;
+        color: transparent;
+
+        position: relative;
+        
+    }
+    .burger__item::before,
+    .burger__item:after{
+        content:"";
+        /* width: 100%; если поставить то полоски буду одинаковые */
+        height: 100%;
+        background-color: #fff;
+        position: absolute;
+        left: 0;
+        z-index: 1;
+        
+    }
+    .burger__item::before{
+       top: -8px;
+       width: 30px;
+    }
+    .burger__item:after{
+        bottom: -8px;
+        width: 20px;
+    }
+    
+    /* Intro title*/
+    .intro__title{
+        font-size: 40px;
+    }
+ /* Features */
+    .features__item{
+        width: 50%;
+    }
+    /* Team */
+    .team__item{
+        width: 50%;
+        text-align: center; /*делаем текст под фото по центру*/
+    }
+    .team__foto{
+        margin-left: auto; /*делаем фото по центру*/
+        margin-right: auto;
+    }
+    /* Social */
+    .social{
+        justify-content: center;
+    }
+    /* Reviews */
+    .reviews__photo{
+        width: 100%;
+        overflow: hidden;
+        margin: 15px 0 40px;
+    }
+    .reviews__content{
+        width: 100%;
+        padding-left: 0;
+        padding-bottom:40px ;
+    }
+    /* .reviews__img{
+        min-width: 991px; делаем картинку на весь блок
+        right: -15px;
+        
+    } */
+
+}
+
+@media(max-width:767px){
+
+    /* Intro */
+    .intro{
+        height: auto;
+        padding-top: 130px;
+        padding-bottom: 30px;
+    }
+/* Intro title*/
+    .intro__title{
+        font-size: 30px;
+    }
+
+/* intro__subtitle */
+    .intro__subtitle{
+        margin-bottom: 30px;
+        font-size: 16px;
+    }
+
+    /* features */
+    #features{
+        margin: 40px 0;
+    }
+    .features__item{
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    /* Works */
+    .works__item{
+        width: 100%;
+        height: 300px;
+    }
+    /* Team */
+    .team{
+        margin: 60px 0 30px ;
+    }
+    .team__item{
+        width: 100%;
+        
+    }
+    /* Reviews */
+    .reviews__text{
+        font-size:25px ;
+    }
+    /* Btn */
+    .btn--long{
+        min-width: 260px;
+    }
+    .download{
+        margin: 50px 0;
+    }
+    .download__title{
+        font-size:24px ;
+    }
+    /* Footer */
+    .footer__iner{
+        padding: 30px 0;
+    }
+    .footer__block{
+        width: 100%;
+        margin-bottom: 30px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .footer__block:last-child  {
+        margin-bottom: 0;
+    }
+    
+}
+
+@media(max-width:414px){
+
+    /* Reviews */
+    .reviews__img{
+        right:-100px ;
+    }
+}
